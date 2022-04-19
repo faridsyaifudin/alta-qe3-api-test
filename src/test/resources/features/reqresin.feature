@@ -20,3 +20,20 @@ Feature: Reqresin
     When user send POST Register Request to reqresin
     Then response status code should be 200
     And  response structure should match json schema "register.json"
+
+#teguh
+  @positive @get-single
+  Scenario: Success GET single resource
+    When user send GET Single request to reqresin with body json "success-get.json"
+    Then response status code should be 201
+
+  @post-create
+  Scenario: Success POST create
+    When user send POST create request to reqresin
+    Then response status code should be 201
+    And response structure should match json schema "create.json"
+
+  @negative @post-login
+  Scenario: Failed POST login
+    When user send POST login request to reqresin with body json "failed-login.json"
+    Then response status code should be 400
